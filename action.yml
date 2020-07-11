@@ -1,5 +1,8 @@
 name: 'Gem auto-tag'
 description: 'Creates a tag with version from your .gemspec file'
+branding:
+  icon: tag
+  color: purple
 inputs:
   github_token:
     description: 'GitHub token'
