@@ -180,7 +180,7 @@ context = Context.new
 octokit = Octokit::Client.new(access_token: gh_token)
 
 commit = octokit.commit(context.repository.to_s, context.sha)
-author = commit.commit.commiter
+author = commit.commit.committer
 
 debug "Commit author: #{author.name} <#{author.email}> @ #{author.date}"
 
