@@ -129,15 +129,11 @@ class Context
 end
 
 ACTION_NAME = 'duderman/gh-gem-tag-action@v1'
-DEBUG = ENV.fetch('DEBUG', 'false')
-DEBUG = !['0', 'false', ''].include?(DEBUG)
 SHA = ENV['GITHUB_SHA']
 TAG_TYPE = 'commit'.freeze
 DEBUG_MSG_PREFIX = '::debug::'.freeze
 
 def debug(msg)
-  return unless DEBUG
-
   log DEBUG_MSG_PREFIX + msg
 end
 
