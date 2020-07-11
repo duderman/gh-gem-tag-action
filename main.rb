@@ -179,9 +179,14 @@ debug "Version from gemspec: #{spec.version}"
 context = Context.new
 octokit = Octokit::Client.new(access_token: gh_token)
 
+commit = octokit.commit(context.repository.to_s, context.sha)
+author = commit.commit.commiter
+
+debug "Commit author: #{author.name} <#{author.email}> @ #{author.date}"
+
 tag_name = "#{tag_prefix}#{spec.version}"
 debug "Creating a tag '#{tag_name}' for repo '#{context.repository}' at #{context.sha}"
-tag = octokit.create_tag(context.repository.to_s, tag_name, context.sha, TAG_TYPE)
+tag = octokit.create_tag(context.repository.to_s, tag_name, context.sha, TAG_TYPE, author.name, author.email, author.date)
 log "Created new tag: #{tag.tag}"
 set_ouput('tag', tag.tag)
 
