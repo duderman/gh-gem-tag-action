@@ -172,7 +172,8 @@ tag_prefix = ARGV[2]
 debug "Running action with: token = '#{gh_token}', " \
       "tag_prefix: '#{tag_prefix}'"
 
-gemspec = Dir.entries('.').detect { |file| File.extname(file) == '.gemspec' } || raise('.gemspec file not found')
+current_dir = ENV.fetch('GITHUB_WORKSPACE', '.')
+gemspec = Dir.entries(current_dir).detect { |file| File.extname(file) == '.gemspec' } || raise('.gemspec file not found')
 spec = Gem::Specification::load(gemspec)
 debug "Version from gemspec: #{spec.version}"
 
