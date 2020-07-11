@@ -166,7 +166,7 @@ def set_ouput(name, value)
 end
 
 gh_token = ARGV[0] || raise(ArgIsMissing, 'github_token')
-tag_prefix = ARGV[2]
+tag_prefix = ARGV[1]
 
 debug "Running action with: token = '#{gh_token}', " \
       "tag_prefix: '#{tag_prefix}'"
