@@ -1,6 +1,6 @@
 FROM ruby:2.7-alpine
-COPY main.rb Gemfile Gemfile.lock /
 RUN apk add --no-cache git && \
-    bundle
+    gem install -N octokit -v 4.18.0
+COPY main.rb /
 
 ENTRYPOINT ["ruby", "/main.rb"]

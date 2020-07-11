@@ -1,8 +1,7 @@
 #!/bin/ruby
 
 require 'rubygems'
-require 'bundler'
-Bundler.setup(:default)
+require 'octokit'
 
 class Repository
   VALIDATION_ERROR = ['Action requires a GITHUB_REPOSITORY environment variable',
