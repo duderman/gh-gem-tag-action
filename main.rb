@@ -22,7 +22,7 @@ class Repository
   end
 
   class << self
-    def self.from(source)
+    def from(source)
       repository_cls(source).new(source).validate!
     end
 
