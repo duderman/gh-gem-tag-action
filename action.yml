@@ -1,0 +1,20 @@
+name: 'Gem auto-tag'
+description: 'Creates a tag with version from your .gemspec file'
+inputs:
+  github_token:
+    description: 'GitHub token'
+    required: true
+  tag_prefix:
+    description: 'Tag prefix'
+    required: false
+outputs:
+  tag:
+    description: 'Created tag'
+  url:
+    description: 'Ref URL'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.github_token }}
+    - ${{ inputs.tag_prefix }}
