@@ -176,7 +176,7 @@ debug "Running action with: token = '#{gh_token}', " \
 
 current_dir = working_directory || ENV.fetch('GITHUB_WORKSPACE', '.')
 gemspec = Dir.entries(current_dir).detect { |file| File.extname(file) == '.gemspec' } || raise('.gemspec file not found')
-spec = Gem::Specification::load(gemspec)
+spec = Gem::Specification::load(File.join(current_dir, gemspec))
 debug "Version from gemspec: #{spec.version}"
 
 context = Context.new
