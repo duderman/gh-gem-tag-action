@@ -10,6 +10,9 @@ inputs:
   tag_prefix:
     description: 'Tag prefix'
     required: false
+  working_directory:
+    description: 'Gem directory'
+    required: false
 outputs:
   tag:
     description: 'Created tag'
@@ -21,3 +24,4 @@ runs:
   args:
     - ${{ inputs.github_token }}
     - ${{ inputs.tag_prefix }}
+    - ${{ inputs.working_directory }}

@@ -12,6 +12,10 @@ This action tags a commit with a version from your .gemspec file
 
 Tag prefix. F.e. if `tag_prefix` set to `v` and current version is `0.1` then the action will create a tag `v0.1`
 
+### `working_directory`
+
+Directory for a gem's gemspec. F.e. if gem is in `monorepo/gem` dir, set it to `monorepo/gem`.
+
 ## Outputs
 
 ### `tag`

@@ -127,7 +127,7 @@ class Context
   end
 end
 
-ACTION_NAME = 'duderman/gh-gem-tag-action@v1'
+ACTION_NAME = 'forward3d/gh-gem-tag-action@v1'
 SHA = ENV['GITHUB_SHA']
 TAG_TYPE = 'commit'.freeze
 DEBUG_MSG_PREFIX = '::debug::'.freeze
@@ -157,6 +157,7 @@ Set it as a step parameter. F.e:
   with:
     github_token: ${{ secrets.GITHUB_TOKEN }}
     tag_prefix: v
+    working_directory: '.'
 )
   end
 end
@@ -169,9 +170,10 @@ gh_token = ARGV[0] || raise(ArgIsMissing, 'github_token')
 tag_prefix = ARGV[1]
 
 debug "Running action with: token = '#{gh_token}', " \
-      "tag_prefix: '#{tag_prefix}'"
+      "tag_prefix: '#{tag_prefix}', " \
+      "working_directory: '#{working_directory}'"
 
-current_dir = ENV.fetch('GITHUB_WORKSPACE', '.')
+current_dir = working_directory || ENV.fetch('GITHUB_WORKSPACE', '.')
 gemspec = Dir.entries(current_dir).detect { |file| File.extname(file) == '.gemspec' } || raise('.gemspec file not found')
 spec = Gem::Specification::load(gemspec)
 debug "Version from gemspec: #{spec.version}"
