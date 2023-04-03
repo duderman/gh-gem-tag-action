@@ -168,6 +168,7 @@ end
 
 gh_token = ARGV[0] || raise(ArgIsMissing, 'github_token')
 tag_prefix = ARGV[1]
+working_directory = ARGV[2]
 
 debug "Running action with: token = '#{gh_token}', " \
       "tag_prefix: '#{tag_prefix}', " \
