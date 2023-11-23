@@ -162,7 +162,7 @@ Set it as a step parameter. F.e:
 end
 
 def set_ouput(name, value)
-  puts "#{name}=#{value}" >> $GITHUB_OUTPUT
+  puts $GITHUB_OUTPUT << "#{name}=#{value}"
 end
 
 gh_token = ARGV[0] || raise(ArgIsMissing, 'github_token')
