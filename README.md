@@ -25,7 +25,7 @@ GitHub URL of the created tag
 ## Example usage
 
 ```yml
-uses: BarnabeD/gh-gem-tag-action@v1
+uses: duderman/gh-gem-tag-action@v1
 with:
   github_token: ${{ secrets.GITHUB_TOKEN }}
   tag_prefix: v
